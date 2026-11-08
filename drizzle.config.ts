@@ -1,8 +1,13 @@
 import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
 
-const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL || process.env.NETLIFY_DATABASE_URL;
-if (!url) throw new Error("DATABASE_URL is required");
+const env = process.env;
+const url = env.DATABASE_URL_UNPOOLED || env.NETLIFY_DATABASE_URL_UNPOOLED || env.DATABASE_URL || env.NETLIFY_DATABASE_URL;
+if (!url) {
+  throw new Error(
+    "No database URL found. Set DATABASE_URL (scope: Builds + Functions) or connect a Neon database to this Netlify site.",
+  );
+}
 
 export default defineConfig({
   dialect: "postgresql",
