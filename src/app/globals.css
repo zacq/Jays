@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0f;
+  --color-panel: #14141c;
+  --color-panel2: #1b1b26;
+  --color-line: #2a2a38;
+  --color-gold: #f7b500;
+  --color-hot: #ff3d71;
+  --color-mint: #2ee6a6;
+  --color-mute: #9a9ab0;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-ink);
+  color: #f4f4f6;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@utility btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-40; }
+@utility btn-gold { @apply btn bg-gold text-black hover:brightness-110; }
+@utility btn-ghost { @apply btn border border-line bg-panel text-white hover:border-gold hover:text-gold; }
+@utility btn-green { @apply btn bg-[#25d366] text-black hover:brightness-110; }
+@utility card { @apply rounded-2xl border border-line bg-panel; }
+@utility chip { @apply inline-flex items-center rounded-full border border-line bg-panel2 px-3 py-1 text-xs font-semibold text-white transition hover:border-gold; }
+@utility chip-on { @apply border-gold bg-gold text-black; }
+@utility field { @apply w-full rounded-xl border border-line bg-panel2 px-3 py-2.5 text-sm text-white placeholder:text-mute focus:border-gold focus:outline-none; }
+@utility label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-mute; }
+@utility h1 { @apply text-3xl font-black leading-tight tracking-tight sm:text-5xl; }
+@utility h2 { @apply text-xl font-extrabold tracking-tight sm:text-2xl; }
+
+/* Admin (light) */
+.admin { color: #0f172a; }
+.admin .a-card { @apply rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }
+.admin .a-in { @apply w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm; }
+.admin .a-btn { @apply inline-flex items-center justify-center rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-700 disabled:opacity-40; }
+.admin .a-btn2 { @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-800 hover:bg-slate-50; }
+.admin .a-th { @apply px-2 py-1.5 text-left text-xs font-semibold uppercase text-slate-500; }
+.admin .a-td { @apply px-2 py-1.5 align-top text-sm; }
+.admin .a-lbl { @apply mb-0.5 block text-xs font-semibold text-slate-600; }
+
+@media print {
+  .no-print { display: none !important; }
+}
